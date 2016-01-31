@@ -24,5 +24,16 @@ html body{
 .title{
     font-family: Roboto,Arial, Helvetica, sans-serif;
     font-weight: bold;
+    font-size: 20px;
+}
+
+.body-box{
+    
+    border: 1px solid #BEB5B6;
+    border-radius: 10px;
+    height: 50vh;
+    width: 90%;
+    background-color: white;
+    margin: 10% 5% 3vh 5%;
     
 }
