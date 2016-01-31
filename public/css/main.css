@@ -1,39 +1,121 @@
 html body{
     margin: 0px;
-    height: 100vh;
+    height: 120vh;
     width: 100%;
     background: radial-gradient(#DCCBDD,#DD4756);
 }
 
 .container{
-    
-    height: 80vh;
+    height: auto;
     width: 70vw;
-    position: fixed;
+   
     margin: 5vh 0px 0px 15vw;
     background-color: #DDDDDD;
     padding-top: 20px; 
     box-shadow: 10px 10px 100px -9px;
-    
+    padding-bottom: 25px;
 }
 
 .center{
     text-align: center;
 }
 
+.title-header{
+    font-family: Montserrat,Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 40px;
+}
+
 .title{
-    font-family: Roboto,Arial, Helvetica, sans-serif;
+    font-family: Montserrat,Arial, Helvetica, sans-serif;
     font-weight: bold;
     font-size: 20px;
 }
 
 .body-box{
-    
+    display: inline-flex;
     border: 1px solid #BEB5B6;
     border-radius: 10px;
-    height: 50vh;
+    height: 60vh;
     width: 90%;
     background-color: white;
-    margin: 10% 5% 3vh 5%;
+    margin: 5% 5% 0% 5%;
     
+}
+
+#printer{
+    display: inline-block;
+    text-align: left;
+    margin-top: 3vh;
+    padding-top: 5%;
+    padding-left: 20px;
+    overflow: auto;
+    background: linear-gradient(#FDFFFD,#FCFAFB);
+    border-right: 1px solid #D9D7D8;
+    border-radius: 10px; 
+    width: 40%;
+    height: 55vh;/*prevent @·# resize */
+}
+
+#reader{
+    text-align: left;
+    display: inline-block;
+    padding-top: 5%;
+    margin: 3vh 0px 0px 2vh;
+    padding-left: 20px;
+    overflow: auto;
+    background: linear-gradient(#F5F1F5 10%,whitesmoke);
+    border: 1px solid #D9D7D8;
+    border-radius: 10px; 
+    width: 40%;
+    height: 55vh;
+}
+
+.file-style{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 17px;
+}
+
+.actions{
+    margin-top: 10px;
+    display: block;
+}
+
+.left{
+    padding-top: 10px;
+    display: inline-block;
+    background-color: black;
+    height: 50px;
+    width: 40%;
+    color: white;
+    transition: all .5s;
+}
+
+.left:hover{
+    background-color: lightslategray;
+    transition: all .5s;
+}
+
+.right{
+    padding-top: 10px;
+    margin-left: 20px;
+    display: inline-block;
+    background-color: red;
+    height: 50px;
+    width: 40%;
+    color: white;
+    transition: all .5s;
+}
+
+.right:hover{
+    transition: all .5s;
+    background-color: #F58360;
+}
+
+.color-purple{
+    color: #F50079;
+}
+
+.color-purple span{
+    color: #F52B0F;
 }

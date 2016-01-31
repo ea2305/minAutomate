@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>mini Automate</title>
     <link rel="stylesheet" href="./public/css/main.css">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
     <script src="./public/js/Main.js"></script>
 </head>
 <body>
@@ -11,15 +12,21 @@
     <section class="container">
         <article class="box center">
             <div class="title-box center">
-                <h1 class="title">Resultados de lectura de automata</h1>
+                <h1 class="title-header color-purple">Automata Finito <span>v1</span></h1>
                 <input type="file" multiple>
             </div>
-            <div class="body-box center">
-                <div id="printer">
-                    
-                </div>
+
+            <div id="printer" class="file-style">
             </div>
+            <textarea id="reader" class="file-style">
+            </textarea>
+        <div class="actions">
+            <div class="left title">Limpiar Texto</div>
+            <div class="right title">Analizar Texto</div>
+            <div class="options"></div>
+        </div>
         </article>
+
     </section>
             
 </body>
