@@ -1,3 +1,6 @@
+var texto2 = "Identificador0 Identificador1 Identificador2 Identificador3";
+q0(texto2);
+
 function q0(cadena) {
   if(cadena.length != 0){
     var caracter = cadena.charAt(0);
