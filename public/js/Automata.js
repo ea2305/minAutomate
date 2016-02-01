@@ -1,6 +1,8 @@
+//Prueba
 var texto = "Int i = 0; float j=2; x=i+j;";
-q0(texto);
-
+console.log(texto);
+console.log(iniciar(texto));
+//retorna true si el caracter es una letra
 function L(caracter) {
   if(
     (caracter >= 'a' && caracter <= 'z') ||
@@ -12,7 +14,7 @@ function L(caracter) {
     return false;
   }
 }
-
+//retorna true si el caracter es un digito
 function D(caracter) {
   if(
     (caracter >= '0' && caracter <= '9')
@@ -23,7 +25,11 @@ function D(caracter) {
     return false;
   }
 }
-
+//inicia el automata
+function iniciar(texto) {
+  return q0(texto);
+}
+//estado q0
 function q0(cadena) {
   if(cadena.length != 0){
     var caracter = cadena.charAt(0);
@@ -31,13 +37,20 @@ function q0(cadena) {
       (caracter === '_') ||
       L(caracter)
     ){
-      q1(cadena.substring(1));
+      return q1(cadena.substring(1));
+    }
+    if(
+      D(caracter)
+    ){
+      return q2(cadena.substring(1));
     }
     else{
-      q0(cadena.substring(1));
+      return q0(cadena.substring(1));
     }
   }
+  return "";
 }
+//estado q1
 function q1(cadena) {
   if(cadena.length != 0){
     var caracter = cadena.charAt(0);
@@ -46,11 +59,26 @@ function q1(cadena) {
       L(caracter) ||
       D(caracter)
     ){
-      q1(cadena.substring(1));
+      return q1(cadena.substring(1));
     }
     else{
-      console.log("Identificador");
-      q0(cadena.substring(1));
+      return "\t" + "Identificador" + q0(cadena.substring(1));
     }
   }
+  return "";
+}
+//estado q2
+function q2(cadena) {
+  if(cadena.length != 0){
+    var caracter = cadena.charAt(0);
+    if(
+      D(caracter)
+    ){
+      return q2(cadena.substring(1));
+    }
+    else{
+      return "\t" + "Entero" + q0(cadena.substring(1));
+    }
+  }
+  return "";
 }
