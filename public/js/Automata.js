@@ -60,6 +60,10 @@ function q0(cadena) {
       return "\t" + "abrirLlave" + "\n" + q0(cadena.substring(1));
     if( caracter === '}' )
       return "\t" + "cerrarLlave" + "\n" + q0(cadena.substring(1));
+    if( caracter === '[' )
+      return "\t" + "abrirBrackets" + "\n" + q0(cadena.substring(1));
+    if( caracter === ']' )
+      return "\t" + "cerrarBrackets" + "\n" + q0(cadena.substring(1));
     if( caracter === ';' )
       return "\t" + "PuntoYComa" + "\n" + q0(cadena.substring(1));
     else
