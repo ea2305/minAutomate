@@ -10,6 +10,7 @@ function L(caracter) {
     return false;
   }
 }
+
 //retorna true si el caracter es un digito
 function D(caracter) {
   if(

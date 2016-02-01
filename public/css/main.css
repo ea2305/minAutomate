@@ -51,7 +51,7 @@ html body{
     padding-left: 20px;
     overflow: auto;
     background: linear-gradient(#FDFFFD,#FCFAFB);
-    border-right: 1px solid #D9D7D8;
+    border: 1px solid #D9D7D8;
     border-radius: 10px; 
     width: 40%;
     height: 55vh;/*prevent @·# resize */

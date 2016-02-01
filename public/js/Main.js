@@ -8,7 +8,8 @@ window.onload = function(){//wait some time until the document is loaded
        document.getElementById('reader').value = e;
     }
 
-    var texto = 'hola sdasdkashdkjahksjhdkajhskdhakjshdkahsdkjhaksdhakshdkajhskdjhaskjdhakjshdkahskjdhaskfaldkshfglksagdflkagsdlkfhg\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\anaasdkhgfsahdgflakhdsglkahsdgflkhsagdflkhagsdlfkhmundo';
-    printer(texto);
-    reader(texto);
+    var texto = "int main(args []){ printf();}";
+    printer(texto);//load info in text boxs
+    reader(iniciar(texto));//load info in text boxs
+    
 }
