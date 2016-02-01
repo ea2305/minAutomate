@@ -1,42 +1,3 @@
-//Prueba
-var texto = (
-  "/**\n"+
-  "*@author Flyzx\n"+
-  "*@version 0.2\n"+
-  "*/\n"+
-  "package transformacionClaves;\n"+
-  "/**\n"+
-  "*Clase con la estructura de un Integer para Hash\n"+
-  "*/\n"+
-  "public class Dato{\n"+
-  "// contiene la clave\n"+
-  "private int clave;\n"+
-  "//contiene el dato\n"+
-  "private Integer dato;\n"+
-  "/**\n"+
-  "*constructor\n"+
-  "*@param int: la clave, Integer: el dato\n"+
-  "*/\n"+
-  "public Dato(int clave, Integer dato){\n"+
-  "this.clave = clave;\n"+
-  "this.dato = dato;\n"+
-  "}\n"+
-  "/**\n"+
-  "*@return int: la clave\n"+
-  "*/\n"+
-  "public int getClave(){\n"+
-  "return this.clave;\n"+
-  "}\n"+
-  "/**\n"+
-  "*@return Integer: el dato\n"+
-  "*/\n"+
-  "public Integer getDato(){\n"+
-  "return this.dato;\n"+
-  "}\n"+
-  "}\n"
-);
-console.log(texto);
-console.log(iniciar(texto));
 //retorna true si el caracter es una letra
 function L(caracter) {
   if(
@@ -122,6 +83,8 @@ function q2(cadena) {
     var caracter = cadena.charAt(0);
     if( D(caracter) )
       return q2(cadena.substring(1));
+    if( caracter === '.' )
+      return q12(cadena.substring(1));
     else
       return "\t" + "Entero" + q0(cadena);
   }
@@ -229,6 +192,17 @@ function q11(cadena) {
       return "\t" + "Comentario" + "\n" + q0(cadena.substring(1));
     else
       return q10(cadena.substring(1));
+  }
+  return "";
+}
+//estado q12
+function q12(cadena) {
+  if(cadena.length != 0){
+    var caracter = cadena.charAt(0);
+    if( D(caracter) )
+      return q12(cadena.substring(1));
+    else
+      return "\t" + "Decimal" + q0(cadena);
   }
   return "";
 }
