@@ -1,13 +1,35 @@
-var texto2 = "Identificador0 Identificador1 Identificador2 Identificador3";
-q0(texto2);
+var texto = "Int i = 0; float j=2; x=i+j;";
+q0(texto);
+
+function L(caracter) {
+  if(
+    (caracter >= 'a' && caracter <= 'z') ||
+    (caracter >= 'A' && caracter <= 'Z')
+  ){
+    return true;
+  }
+  else{
+    return false;
+  }
+}
+
+function D(caracter) {
+  if(
+    (caracter >= '0' && caracter <= '9')
+  ){
+    return true;
+  }
+  else{
+    return false;
+  }
+}
 
 function q0(cadena) {
   if(cadena.length != 0){
     var caracter = cadena.charAt(0);
     if(
       (caracter === '_') ||
-      (caracter >= 'a' && caracter <= 'z') ||
-      (caracter >= 'A' && caracter <= 'Z')
+      L(caracter)
     ){
       q1(cadena.substring(1));
     }
@@ -21,9 +43,8 @@ function q1(cadena) {
     var caracter = cadena.charAt(0);
     if(
       (caracter === '_') ||
-      (caracter >= 'a' && caracter <= 'z') ||
-      (caracter >= 'A' && caracter <= 'Z') ||
-      (caracter >= '0' && caracter <= '1')
+      L(caracter) ||
+      D(caracter)
     ){
       q1(cadena.substring(1));
     }
