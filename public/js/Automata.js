@@ -7,12 +7,10 @@ var palabrasReservadas = ["int", "double", "fload", "String", "main"];
 //comprueba si es una palabra
 function comprovarPalabrasReservadas(palabra) {
   for (var i = 0; i < palabrasReservadas.length; i++) {
-    console.log(palabra);
     if(palabrasReservadas[i] === palabra)
       return true;
-    else
-      return false;
   }
+  return false;
 }
 
 //retorna true si el caracter es una letra minuscula
@@ -95,8 +93,13 @@ function q1(cadena) {
       }
     }
   }
-  memoria = "";
-  return "\n" +"Identificador";
+  if(comprovarPalabrasReservadas(memoria)){
+    memoria = "";
+    return "\n" + "palabraReservada" + q0(cadena);
+  }else {
+    memoria = "";
+    return "\n" + "Identificador" + q0(cadena);
+  }
 }
 //estado q2
 function q2(cadena) {
