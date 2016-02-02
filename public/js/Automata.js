@@ -1,31 +1,14 @@
 //retorna true si el caracter es una letra
-function L(caracter) {
-  if(
-    (caracter >= 'a' && caracter <= 'z') ||
-    (caracter >= 'A' && caracter <= 'Z')
-  ){
-    return true;
-  }
-  else{
-    return false;
-  }
-}
+function L(caracter) {return /[a-z]/.test(caracter);}
 
 //retorna true si el caracter es un digito
-function D(caracter) {
-  if(
-    (caracter >= '0' && caracter <= '9')
-  ){
-    return true;
-  }
-  else{
-    return false;
-  }
-}
+function D(caracter) {return /[0-9]/.test(caracter);}
+
 //inicia el automata
 function iniciar(texto) {
   return q0(texto);
 }
+
 //estado q0
 function q0(cadena) {
   if(cadena.length != 0){
@@ -47,25 +30,25 @@ function q0(cadena) {
     if( caracter === '/' )
       return q8(cadena.substring(1));
     if( caracter === '.' )
-      return "\t" + "Punto" + q0(cadena.substring(1));
+      return "\n" + "Punto" + q0(cadena.substring(1));
     if( caracter === '*' )
-      return "\t" + "Multripicas" + q0(cadena.substring(1));
+      return "\n" + "Multripicas" + q0(cadena.substring(1));
     if( caracter === '^' )
-      return "\t" + "Elevar" + q0(cadena.substring(1));
+      return "\n" + "Elevar" + q0(cadena.substring(1));
     if( caracter === '(' )
-      return "\t" + "abrirParentesis" + q0(cadena.substring(1));
+      return "\n" + "abrirParentesis" + q0(cadena.substring(1));
     if( caracter === ')' )
-      return "\t" + "cerrarParentesis" + q0(cadena.substring(1));
+      return "\n" + "cerrarParentesis" + q0(cadena.substring(1));
     if( caracter === '{' )
-      return "\t" + "abrirLlave" + "\n" + q0(cadena.substring(1));
+      return "\n" + "abrirLlave" + "\n" + q0(cadena.substring(1));
     if( caracter === '}' )
-      return "\t" + "cerrarLlave" + "\n" + q0(cadena.substring(1));
+      return "\n" + "cerrarLlave" + "\n" + q0(cadena.substring(1));
     if( caracter === '[' )
-      return "\t" + "abrirBrackets" + "\n" + q0(cadena.substring(1));
+      return "\n" + "abrirBrackets" + "\n" + q0(cadena.substring(1));
     if( caracter === ']' )
-      return "\t" + "cerrarBrackets" + "\n" + q0(cadena.substring(1));
+      return "\n" + "cerrarBrackets" + "\n" + q0(cadena.substring(1));
     if( caracter === ';' )
-      return "\t" + "PuntoYComa" + "\n" + q0(cadena.substring(1));
+      return "\n" + "PuntoYComa" + "\n" + q0(cadena.substring(1));
     else
       return q0(cadena.substring(1));
   }
@@ -78,7 +61,7 @@ function q1(cadena) {
     if( (caracter === '_') || L(caracter) || D(caracter) )
       return q1(cadena.substring(1));
     else
-      return "\t" + "Identificador" + q0(cadena);
+      return "\n" + "Identificador" + q0(cadena);
   }
   return "";
 }
@@ -91,7 +74,7 @@ function q2(cadena) {
     if( caracter === '.' )
       return q12(cadena.substring(1));
     else
-      return "\t" + "Entero" + q0(cadena);
+      return "\n" + "Entero" + q0(cadena);
   }
   return "";
 }
@@ -100,11 +83,11 @@ function q3(cadena) {
   if(cadena.length != 0){
     var caracter = cadena.charAt(0);
     if( caracter === '+' )
-      return "\t" + "incremento" + q0(cadena.substring(1));
+      return "\n" + "incremento" + q0(cadena.substring(1));
     if( D(caracter) )
       return q2(cadena.substring(1));
     else
-      return "\t" + "suma" + q0(cadena);
+      return "\n" + "suma" + q0(cadena);
   }
   return "";
 }
@@ -113,11 +96,11 @@ function q4(cadena) {
   if(cadena.length != 0){
     var caracter = cadena.charAt(0);
     if( caracter === '-' )
-      return "\t" + "decremento" + q0(cadena.substring(1));
+      return "\n" + "decremento" + q0(cadena.substring(1));
     if( D(caracter) )
       return q2(cadena.substring(1));
     else
-      return "\t" + "resta" + q0(cadena);
+      return "\n" + "resta" + q0(cadena);
   }
   return "";
 }
@@ -126,9 +109,9 @@ function q5(cadena) {
   if(cadena.length != 0){
     var caracter = cadena.charAt(0);
     if( caracter === '=' )
-      return "\t" + "comparacion" + q0(cadena.substring(1));
+      return "\n" + "comparacion" + q0(cadena.substring(1));
     else
-      return "\t" + "asignacion" + q0(cadena);
+      return "\n" + "asignacion" + q0(cadena);
   }
   return "";
 }
@@ -137,9 +120,9 @@ function q6(cadena) {
   if(cadena.length != 0){
     var caracter = cadena.charAt(0);
     if( caracter === '=' )
-      return "\t" + "menorIgual" + q0(cadena.substring(1));
+      return "\n" + "menorIgual" + q0(cadena.substring(1));
     else
-      return "\t" + "menor" + q0(cadena);
+      return "\n" + "menor" + q0(cadena);
   }
   return "";
 }
@@ -148,9 +131,9 @@ function q7(cadena) {
   if(cadena.length != 0){
     var caracter = cadena.charAt(0);
     if( caracter === '=' )
-      return "\t" + "mayorIgual" + q0(cadena.substring(1));
+      return "\n" + "mayorIgual" + q0(cadena.substring(1));
     else
-      return "\t" + "mayor" + q0(cadena);
+      return "\n" + "mayor" + q0(cadena);
   }
   return "";
 }
@@ -163,7 +146,7 @@ function q8(cadena) {
     if( caracter === '*' )
       return q10(cadena.substring(1));
     else
-      return "\t" + "Dividir" + q0(cadena);
+      return "\n" + "Dividir" + q0(cadena);
   }
   return "";
 }
@@ -172,7 +155,7 @@ function q9(cadena) {
   if(cadena.length != 0){
     var caracter = cadena.charAt(0);
     if( caracter === '\n' )
-      return "\t" + "Comentario" + "\n" + q0(cadena.substring(1));
+      return "\n" + "Comentario" + "\n" + q0(cadena.substring(1));
     else
       return q9(cadena.substring(1));
   }
@@ -194,7 +177,7 @@ function q11(cadena) {
   if(cadena.length != 0){
     var caracter = cadena.charAt(0);
     if( caracter === '/' )
-      return "\t" + "Comentario" + "\n" + q0(cadena.substring(1));
+      return "\n" + "Comentario" + "\n" + q0(cadena.substring(1));
     else
       return q10(cadena.substring(1));
   }
@@ -207,7 +190,7 @@ function q12(cadena) {
     if( D(caracter) )
       return q12(cadena.substring(1));
     else
-      return "\t" + "Decimal" + q0(cadena);
+      return "\n" + "Decimal" + q0(cadena);
   }
   return "";
 }

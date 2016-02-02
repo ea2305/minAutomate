@@ -1,15 +1,31 @@
 window.onload = function(){//wait some time until the document is loaded
 
     var reader = (e) => {
-        document.getElementById('printer').innerHTML = e;
+        document.getElementById('reader').value = e;
     }
 
     var printer = (e) => {
-       document.getElementById('reader').value = e;
+       document.getElementById('printer').value = e;
     }
-
-    var texto = "int main(args []){ printf();}";
-    printer(texto);//load info in text boxs
-    reader(iniciar(texto));//load info in text boxs
     
+    function clean(){
+        reader('');
+        printer(''); 
+    }
+    
+    function analize(){
+      console.log('click en analize');
+      var text = document.getElementById('reader').value;
+      console.log(text);
+      var result = iniciar(text);//Launch automate
+      console.log(result);
+      printer(result);
+    }
+    
+    //Handlers
+    document.getElementById('launch').addEventListener('click',analize);
+    document.getElementById('clean').addEventListener('click',clean());
+    
+    //First sentences
+    clean();
 }
