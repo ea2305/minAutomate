@@ -1,5 +1,25 @@
-//retorna true si el caracter es una letra
-function L(caracter) {return /[a-z]/.test(caracter);}
+//Memoria Temporal
+var memoria = "";
+
+//palabras Reservadas
+var palabrasReservadas = ["int", "double", "fload", "String", "main"];
+
+//comprueba si es una palabra
+function comprovarPalabrasReservadas(palabra) {
+  for (var i = 0; i < palabrasReservadas.length; i++) {
+    console.log(palabra);
+    if(palabrasReservadas[i] === palabra)
+      return true;
+    else
+      return false;
+  }
+}
+
+//retorna true si el caracter es una letra minuscula
+function min(caracter) {return /[a-z]/.test(caracter);}
+
+//retorna true si el caracter es una letra minuscula
+function may(caracter) {return /[A-Z]/.test(caracter);}
 
 //retorna true si el caracter es un digito
 function D(caracter) {return /[0-9]/.test(caracter);}
@@ -13,8 +33,10 @@ function iniciar(texto) {
 function q0(cadena) {
   if(cadena.length != 0){
     var caracter = cadena.charAt(0);
-    if( (caracter === '_') || L(caracter) )
+    if( (caracter === '_') || min(caracter) || may(caracter) ){
+      memoria += caracter;
       return q1(cadena.substring(1));
+    }
     if( D(caracter) )
       return q2(cadena.substring(1));
     if( caracter === '+' )
@@ -29,6 +51,8 @@ function q0(cadena) {
       return q7(cadena.substring(1));
     if( caracter === '/' )
       return q8(cadena.substring(1));
+    if( caracter === '"' )
+      return q13(cadena.substring(1));
     if( caracter === '.' )
       return "\n" + "Punto" + q0(cadena.substring(1));
     if( caracter === '*' )
@@ -58,12 +82,21 @@ function q0(cadena) {
 function q1(cadena) {
   if(cadena.length != 0){
     var caracter = cadena.charAt(0);
-    if( (caracter === '_') || L(caracter) || D(caracter) )
+    if( (caracter === '_') || min(caracter) || may(caracter) || D(caracter) ){
+      memoria += caracter;
       return q1(cadena.substring(1));
-    else
-      return "\n" + "Identificador" + q0(cadena);
+    }else{
+      if(comprovarPalabrasReservadas(memoria)){
+        memoria = "";
+        return "\n" + "palabraReservada" + q0(cadena);
+      }else {
+        memoria = "";
+        return "\n" + "Identificador" + q0(cadena);
+      }
+    }
   }
-  return "";
+  memoria = "";
+  return "\n" +"Identificador";
 }
 //estado q2
 function q2(cadena) {
@@ -76,7 +109,7 @@ function q2(cadena) {
     else
       return "\n" + "Entero" + q0(cadena);
   }
-  return "";
+  return "\n" +"Entero";
 }
 //estado q3
 function q3(cadena) {
@@ -89,7 +122,7 @@ function q3(cadena) {
     else
       return "\n" + "suma" + q0(cadena);
   }
-  return "";
+  return "\n" +"suma";
 }
 //estado q4
 function q4(cadena) {
@@ -102,7 +135,7 @@ function q4(cadena) {
     else
       return "\n" + "resta" + q0(cadena);
   }
-  return "";
+  return "\n" +"resta";
 }
 //estado q5
 function q5(cadena) {
@@ -113,7 +146,7 @@ function q5(cadena) {
     else
       return "\n" + "asignacion" + q0(cadena);
   }
-  return "";
+  return "\n" +"asignacion";
 }
 //estado q6
 function q6(cadena) {
@@ -124,7 +157,7 @@ function q6(cadena) {
     else
       return "\n" + "menor" + q0(cadena);
   }
-  return "";
+  return "\n" +"menor";
 }
 //estado q7
 function q7(cadena) {
@@ -135,7 +168,7 @@ function q7(cadena) {
     else
       return "\n" + "mayor" + q0(cadena);
   }
-  return "";
+  return "\n" +"mayor";
 }
 //estado q8
 function q8(cadena) {
@@ -148,7 +181,7 @@ function q8(cadena) {
     else
       return "\n" + "Dividir" + q0(cadena);
   }
-  return "";
+  return "\n" +"Dividir";
 }
 //estado q9
 function q9(cadena) {
@@ -191,6 +224,17 @@ function q12(cadena) {
       return q12(cadena.substring(1));
     else
       return "\n" + "Decimal" + q0(cadena);
+  }
+  return "\n" +"Decimal";
+}
+//estado q13
+function q13(cadena) {
+  if(cadena.length != 0){
+    var caracter = cadena.charAt(0);
+    if( caracter === '"' )
+      return "\n" + "Cadena" + q0(cadena.substring(1));
+    else
+      return q13(cadena.substring(1));
   }
   return "";
 }
