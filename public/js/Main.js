@@ -14,7 +14,6 @@ window.onload = function(){//wait some time until the document is loaded
     }
     
     function analize(){
-      console.log('click en analize');
       var text = document.getElementById('reader').value;
       console.log(text);
       var result = iniciar(text);//Launch automate
@@ -24,7 +23,7 @@ window.onload = function(){//wait some time until the document is loaded
     
     //Handlers
     document.getElementById('launch').addEventListener('click',analize);
-    document.getElementById('clean').addEventListener('click',clean());
+    document.getElementById('clean').addEventListener('click',clean);
     
     //First sentences
     clean();
