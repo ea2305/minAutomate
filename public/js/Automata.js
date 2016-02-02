@@ -8,7 +8,7 @@ var palabrasReservadas = ["int", "double", "fload", "String", "main"];
 function comprovarPalabrasReservadas(palabra) {
   for (var i = 0; i < palabrasReservadas.length; i++) {
     console.log(palabra);
-    if(palabrasReservadas[i] === palabra)
+    if(palabrasReservadas[i].trim() === palabra.trim())
       return true;
     else
       return false;
