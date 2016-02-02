@@ -40,15 +40,15 @@ function q0(cadena) {
     if( caracter === ')' )
       return "\n" + "cerrarParentesis" + q0(cadena.substring(1));
     if( caracter === '{' )
-      return "\n" + "abrirLlave" + "\n" + q0(cadena.substring(1));
+      return "\n" + "abrirLlave" + q0(cadena.substring(1));
     if( caracter === '}' )
-      return "\n" + "cerrarLlave" + "\n" + q0(cadena.substring(1));
+      return "\n" + "cerrarLlave" + q0(cadena.substring(1));
     if( caracter === '[' )
-      return "\n" + "abrirBrackets" + "\n" + q0(cadena.substring(1));
+      return "\n" + "abrirBrackets" + q0(cadena.substring(1));
     if( caracter === ']' )
-      return "\n" + "cerrarBrackets" + "\n" + q0(cadena.substring(1));
+      return "\n" + "cerrarBrackets" + q0(cadena.substring(1));
     if( caracter === ';' )
-      return "\n" + "PuntoYComa" + "\n" + q0(cadena.substring(1));
+      return "\n" + "PuntoYComa" + q0(cadena.substring(1));
     else
       return q0(cadena.substring(1));
   }
@@ -155,7 +155,7 @@ function q9(cadena) {
   if(cadena.length != 0){
     var caracter = cadena.charAt(0);
     if( caracter === '\n' )
-      return "\n" + "Comentario" + "\n" + q0(cadena.substring(1));
+      return "\n" + "Comentario" + q0(cadena.substring(1));
     else
       return q9(cadena.substring(1));
   }
@@ -177,7 +177,7 @@ function q11(cadena) {
   if(cadena.length != 0){
     var caracter = cadena.charAt(0);
     if( caracter === '/' )
-      return "\n" + "Comentario" + "\n" + q0(cadena.substring(1));
+      return "\n" + "Comentario" + q0(cadena.substring(1));
     else
       return q10(cadena.substring(1));
   }
