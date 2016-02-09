@@ -7,12 +7,12 @@ var palabrasReservadas = ["int", "double", "fload", "String", "main"];
 //comprueba si es una palabra
 function comprovarPalabrasReservadas(palabra) {
   for (var i = 0; i < palabrasReservadas.length; i++) {
-    console.log(palabra);
-    if(palabrasReservadas[i].trim() === palabra.trim())
+
+    if(palabrasReservadas[i] === palabra)
+
       return true;
-    else
-      return false;
   }
+  return false;
 }
 
 //retorna true si el caracter es una letra minuscula
@@ -56,7 +56,7 @@ function q0(cadena) {
     if( caracter === '.' )
       return "\n" + "Punto" + q0(cadena.substring(1));
     if( caracter === '*' )
-      return "\n" + "Multripicas" + q0(cadena.substring(1));
+      return "\n" + "Muliplicación" + q0(cadena.substring(1));
     if( caracter === '^' )
       return "\n" + "Elevar" + q0(cadena.substring(1));
     if( caracter === '(' )
@@ -74,7 +74,7 @@ function q0(cadena) {
     if( caracter === ';' )
       return "\n" + "PuntoYComa" + q0(cadena.substring(1));
     else
-      return q0(cadena.substring(1));
+      return "\nIndefinido"+q0(cadena.substring(1));
   }
   return "";
 }
@@ -95,8 +95,13 @@ function q1(cadena) {
       }
     }
   }
-  memoria = "";
-  return "\n" +"Identificador";
+  if(comprovarPalabrasReservadas(memoria)){
+    memoria = "";
+    return "\n" + "palabraReservada" + q0(cadena);
+  }else {
+    memoria = "";
+    return "\n" + "Identificador" + q0(cadena);
+  }
 }
 //estado q2
 function q2(cadena) {
